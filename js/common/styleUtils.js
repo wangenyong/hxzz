@@ -18,11 +18,26 @@ let itemCell = {
   }
 }
 
+let listCell = {
+  backgroundColor: 'white',
+  margin: 10,
+  marginBottom: 0,
+  borderRadius: 2,
+  shadowColor: '#000000',
+  shadowOpacity: 0.1,
+  shadowRadius: 0,
+  shadowOffset: {
+    height: 1,
+    width: 1
+  }
+}
+
 export default {
   containerBg: {
     backgroundColor: '#efeff4'
   },
   itemCell: itemCell,
+  listCell: listCell,
   card: {
     tweetContainer: {
       ...itemCell,

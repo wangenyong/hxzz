@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import React, { Component, PropTypes } from 'react';
 import Header from '../common/Header';
 import Colors from '../common/Colors';
+import styleUtils from '../common/styleUtils';
 import {
   View,
   Text,
@@ -57,7 +58,7 @@ class InfoView extends Component {
       <TouchableOpacity>
         <View style={styles.row}>
           <Text style={styles.rowTitle} >{item.class_name}</Text>
-
+          <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimaryLight} />
         </View>
       </TouchableOpacity>
     );
@@ -86,21 +87,23 @@ class InfoView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    ...styleUtils.containerBg
   },
   listView: {
   },
   row: {
+    ...styleUtils.listCell,
     flex: 1,
-    height: 48,
+    padding: 10,
     flexDirection: 'row',
-    borderBottomWidth: 0.5,
-    borderBottomColor: 'lightgray',
     alignItems: 'center',
-    marginLeft: 10,
   },
   rowTitle: {
+    flex: 1,
     fontSize: 16
   }
 })
+
+const cards = StyleSheet.create(styleUtils.card)
 
 export default InfoView
