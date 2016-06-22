@@ -18,7 +18,7 @@ import {
 } from 'react-native';
 
 type Props = {
-  onLoginSuccess: (id: string) => void;
+  onLoginSuccess: (json: Object) => void;
   onLoginError: () => void;
 }
 
@@ -52,8 +52,9 @@ class SigninView extends Component {
 
     fetch('http://220.165.8.15:5000/login/' + this.state.username + '/' + this.state.password)
     .then((response) => response.text())
-    .then((responseText) => {
-      console.log(responseText);
+    .then((responseText) => JSON.parse(responseText))
+    .then((json) => {
+      onLoginSuccess(json);
     })
     .catch((error) => {
       console.warn(error);

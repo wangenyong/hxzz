@@ -4,12 +4,11 @@
 'use strict';
 
 import type {Action} from './types';
-import type { UserState } from '../reducers/user';
 // User action creators
-export function onUserLoginSuccess(user: UserState): Action {
+export function onUserLoginSuccess(json: Object): Action {
   return {
     type: 'USER_LOGIN_SUCCESS',
-    user
+    json
   }
 }
 

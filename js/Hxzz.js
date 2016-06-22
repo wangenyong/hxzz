@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    isLoggedIn: state.user.isLoggedIn
+    isLoggedIn: state.user.loginstatus
   };
 }
 
