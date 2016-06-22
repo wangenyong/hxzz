@@ -6,28 +6,28 @@
 
 import type {Action} from '../actions/types';
 
-export type State = {
-  isLoggedIn: boolean;
-  hasSkippedLogin: boolean;
-  id: ?string;
-  name: ?string;
+export type UserState = {
+  loginstatus: boolean;
+  dep_id: ?string;
+  department: ?string;
+  realname: ?string;
+  role: ?string;
+  username: ?string;
 }
 
 const initialState = {
-  isLoggedIn: false,
-  hasSkippedLogin: false,
-  id: null,
-  name: null
+  loginstatus: false,
+  dep_id: null,
+  department: null,
+  realname: null,
+  role: null,
+  username: null
 };
 
-export default function user(state: State = initialState, action: Action): State {
+export default function user(state: UserState = initialState, action: Action): UserState {
   switch (action.type) {
     case 'USER_LOGIN_SUCCESS':
-      return {
-        ...state,
-        isLoggedIn: true,
-        id: action.id
-      }
+      return action.user
     case 'USER_LOGIN_ERROR':
       return initialState
     case 'LOGGED_OUT':
