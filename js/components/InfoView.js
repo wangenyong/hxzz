@@ -14,10 +14,55 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
-  TextInput
+  TextInput,
+  ListView
 } from 'react-native';
 
+type Props = {
+  dataSource: any;
+  onRootInfoReceived: (json: Object) => void;
+}
+
 class InfoView extends Component {
+  props: Props;
+
+  constructor(props: Props) {
+    super(props);
+  }
+
+  /**
+   * 当页面加载完成，发布获取新闻Action
+   */
+  componentDidMount(){
+    const { onRootInfoReceived } = this.props;
+
+    fetch('http://220.165.8.15:5000/get_class_by_id/0')
+    .then((response) => response.text())
+    .then((responseText) => JSON.parse(responseText))
+    .then((json) => {
+      onRootInfoReceived(json);
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  }
+
+  /**
+   * 渲染列表项
+   * @param  item 列表项内容
+   * @return 返回样式格式化后的内容
+   */
+  _renderRow(item: any) {
+    return (
+      <TouchableOpacity>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle} >{item.class_name}</Text>
+
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
   render() {
     var backgroundColor = Colors.colorPrimary;
     return (
@@ -25,9 +70,14 @@ class InfoView extends Component {
         <Header
           title="校园资讯"
           style={[{backgroundColor}]} />
-        <View style={styles.center} >
-          <Text> Info </Text>
-        </View>
+        { /* 校园咨询根目录列表 */ }
+        <ListView style={styles.listView}
+          dataSource={this.props.dataSource}
+          renderRow={(rowData) => this._renderRow(rowData)}
+          enableEmptySections={true}
+          contentInset={{top:0, left:0, bottom: 64, right: 0}}
+          automaticallyAdjustContentInsets={false}
+        />
       </View>
     )
   }
@@ -37,10 +87,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  center: {
+  listView: {
+  },
+  row: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    height: 48,
+    flexDirection: 'row',
+    borderBottomWidth: 0.5,
+    borderBottomColor: 'lightgray',
+    alignItems: 'center',
+    marginLeft: 10,
+  },
+  rowTitle: {
+    fontSize: 16
   }
 })
 
