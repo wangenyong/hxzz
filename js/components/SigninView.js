@@ -34,8 +34,8 @@ class SigninView extends Component {
   constructor(props: Props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
+      username: '董亮',
+      password: '123456',
       isLoading: false
     }
   }
@@ -50,7 +50,7 @@ class SigninView extends Component {
     // Show spinner
     this.setState({isLoading: true});
 
-    fetch('http://220.165.8.15:5000/login/')
+    fetch('http://220.165.8.15:5000/login/' + this.state.username + '/' + this.state.password)
     .then((response) => response.text())
     .then((responseText) => {
       console.log(responseText);
@@ -77,7 +77,6 @@ class SigninView extends Component {
               placeholder="请输入OA系统用户名"
               placeholderTextColor="darkgray"
               onChangeText={(text) => this.setState({username: text})}
-              value={this.state.username}
             />
           </View>
           <View style={styles.inputContainer} /* 密码 */ >
@@ -88,7 +87,6 @@ class SigninView extends Component {
               placeholder="请输入OA系统登录密码"
               placeholderTextColor="darkgray"
               onChangeText={(text) => this.setState({password: text})}
-              value={this.state.password}
             />
           </View>
           <View style={styles.signin} /* 登录按钮 */ >
