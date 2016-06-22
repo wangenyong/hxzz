@@ -11,7 +11,9 @@ type State = {
 }
 
 const initialState = {
-  root: {}
+  root: {
+    data: []
+  }
 };
 
 export default function info(state: State = initialState, action: Action): State {

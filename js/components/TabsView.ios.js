@@ -9,7 +9,7 @@ import React, { Component, PropTypes } from 'react';
 import type { Tab } from '../reducers/navigation';
 import Colors from '../common/Colors';
 import PostView from '../components/PostView';
-import InfoView from '../components/InfoView';
+import Info from '../containers/Info';
 import SettingView from '../components/SettingView';
 import {
   View,
@@ -66,7 +66,7 @@ class TabsView extends Component {
           selected={this.props.tab === 'info'}
           onPress={this.onTabSelect.bind(this, 'info')}
           >
-          <InfoView navigator={this.props.navigator} />
+          <Info navigator={this.props.navigator} />
         </Icon.TabBarItem>
         <Icon.TabBarItem
           title="系统设置"
