@@ -26,7 +26,7 @@ type Props = {
   id: string;
   infoDataSource: any;
   newsDataSource: any;
-  onInfoReceived: (json: Object) => void;
+  onInfoReceived: (json: Array<Object>) => void;
   onNewsListReceived: (json: Object) => void;
 }
 
@@ -50,6 +50,7 @@ class InfoView extends Component {
     .then((responseText) => JSON.parse(responseText))
     .then((json) => {
       console.log(json);
+      onInfoReceived(json.data);
     })
     .catch((error) => {
       console.warn(error);

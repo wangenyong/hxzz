@@ -32,6 +32,7 @@ export default function info(state: State = initialState, action: Action): State
       return {
         ...state,
         second: {
+          ...state.second,
           data: action.json
         }
       }
@@ -39,6 +40,7 @@ export default function info(state: State = initialState, action: Action): State
       return {
         ...state,
         second: {
+          ...state.second,
           newsList: action.json
         }
       }

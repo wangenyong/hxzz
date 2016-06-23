@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onInfoReceived: (json: Object) => {
+    onInfoReceived: (json: Array<Object>) => {
       dispatch(onSecondInfoReceived(json))
     },
     onNewsListReceived: (json: Object) => {

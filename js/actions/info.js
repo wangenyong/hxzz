@@ -12,7 +12,7 @@ export function onRootInfoReceived(json: Object): Action {
   }
 }
 
-export function onSecondInfoReceived(json: Object): Action {
+export function onSecondInfoReceived(json: Array<Object>): Action {
   return {
     type: 'SECOND_INFO_RECEIVED',
     json
