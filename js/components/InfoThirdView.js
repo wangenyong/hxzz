@@ -10,6 +10,7 @@ import Header from '../common/Header';
 import Colors from '../common/Colors';
 import styleUtils from '../common/styleUtils';
 import PureListView from '../common/PureListView';
+import BackIcon from '../common/BackButtonIcon';
 import {
   View,
   Text,
@@ -22,25 +23,29 @@ import {
 type Props = {
   navigator: Navigator;
   dataSource: any;
+  id: string;
+  username: string;
   isFetching: boolean;
-  fetchRootInfo: () => void;
+  fetchThirdNews: (id: string, username: string) => void;
 }
 
 class InfoThirdView extends Component {
   props: Props;
   renderRow: (item: string) => void;
+  dismiss: () => void;
 
   constructor(props: Props) {
     super(props);
     this.renderRow = this.renderRow.bind(this);
+    this.dismiss = this.dismiss.bind(this);
   }
 
   /**
    * 当页面加载完成，发布获取新闻Action
    */
   componentDidMount(){
-    const { fetchRootInfo } = this.props;
-    fetchRootInfo();
+    const { id, fetchThirdNews, username } = this.props;
+    fetchThirdNews(id, username);
   }
 
   /**
@@ -81,6 +86,12 @@ class InfoThirdView extends Component {
     return (
       <View style={styles.container} >
         <Header
+        leftItem={{
+          layout: 'icon',
+          title: 'Back',
+          icon: BackIcon,
+          onPress: this.dismiss
+        }}
           title="校园资讯"
           style={[{backgroundColor}]} />
           <PureListView
@@ -89,9 +100,17 @@ class InfoThirdView extends Component {
       </View>
     )
   }
+
+  dismiss() {
+    this.props.navigator.pop();
+  }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    ...styleUtils.containerBg
+  },
   newsContainer: {
     flex: 1,
     flexDirection: 'row',

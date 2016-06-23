@@ -127,12 +127,12 @@ export function requestThirdNews(): Action {
  */
 export function fetchThirdNews(id: string, username: string) {
   return (dispatch: any) => {
-    dispatch(requestRootInfo())
+    dispatch(requestThirdNews())
     return fetch('http://220.165.8.15:5000/get_news_by_cid/' + id + '/' + username)
       .then((response) => response.text())
       .then((responseText) => JSON.parse(responseText))
       .then((json) => {
-        dispatch(onThirdNewsListReceived(json.data))
+        dispatch(onThirdNewsListReceived(json.newslist))
       })
       .catch((error) => {
         console.warn(error);

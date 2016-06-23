@@ -36,7 +36,7 @@ class InfoMixView extends Component {
   props: Props;
   dismiss: () => void;
   renderRow: (item: string) => void;
-  _renderLink: (title: string) => void;
+  _renderLink: (title: string, id: string) => void;
   _renderNew: (title: string, date: string, img: string) => void;
 
   constructor(props: Props) {
@@ -63,7 +63,7 @@ class InfoMixView extends Component {
   renderRow(item: any) {
     if (item.class_id) {
       return (
-        this._renderLink(item.class_name)
+        this._renderLink(item.class_name, item.class_id)
       )
     } else {
       var date = new Date(item.updatetime);
@@ -73,9 +73,9 @@ class InfoMixView extends Component {
     }
   }
 
-  _renderLink(title: string) {
+  _renderLink(title: string, id: string) {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this._onInfoPress.bind(this, id)} >
         <View style={styles.row}>
           <Text style={styles.rowTitle} >{title}</Text>
           <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} />
@@ -97,6 +97,13 @@ class InfoMixView extends Component {
       </View>
       </TouchableOpacity>
     )
+  }
+
+  _onInfoPress(id: string) {
+    this.props.navigator.push({
+      name: 'InfoThird',
+      id
+    })
   }
 
   render() {
