@@ -9,7 +9,7 @@ import React, { Component, PropTypes } from 'react';
 import Header from '../common/Header';
 import Colors from '../common/Colors';
 import styleUtils from '../common/styleUtils';
-import GiftedSpinner from 'react-native-gifted-spinner';
+import PureListView from '../common/PureListView';
 import {
   View,
   Text,
@@ -30,9 +30,11 @@ type Props = {
 
 class InfoView extends Component {
   props: Props;
+  renderRow: (item: string) => void;
 
   constructor(props: Props) {
     super(props);
+    this.renderRow = this.renderRow.bind(this);
   }
 
   /**
@@ -48,7 +50,7 @@ class InfoView extends Component {
    * @param  item 列表项内容
    * @return 返回样式格式化后的内容
    */
-  _renderRow(item: any) {
+  renderRow(item: any) {
     return (
       <TouchableOpacity onPress={this._onPress.bind(this, item.class_id)} >
         <View style={styles.row}>
@@ -71,37 +73,16 @@ class InfoView extends Component {
     })
   }
 
-  /**
-   * 渲染 Loading
-   * @return 返回 Loading 指示器
-   */
-  _renderLoading() {
-    return (
-      <View style={styles.center}>
-        <GiftedSpinner styleAttr="Small" />
-      </View>
-    );
-  }
-
   render() {
     var backgroundColor = Colors.colorPrimary;
-    if (this.props.isFetching) {
-      return this._renderLoading();
-    }
-
     return (
       <View style={styles.container} >
         <Header
           title="校园资讯"
           style={[{backgroundColor}]} />
-        { /* 校园咨询根目录列表 */ }
-        <ListView style={styles.listView}
-          dataSource={this.props.dataSource}
-          renderRow={(rowData) => this._renderRow(rowData)}
-          enableEmptySections={true}
-          contentInset={{top:0, left:0, bottom: 64, right: 0}}
-          automaticallyAdjustContentInsets={false}
-        />
+          <PureListView
+            renderRow={this.renderRow}
+            {...this.props} />
       </View>
     )
   }
