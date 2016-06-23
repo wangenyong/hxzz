@@ -13,6 +13,7 @@ type State = {
 
 const initialState = {
   root: {
+    isFetching: false,
     data: []
   },
   second: {
@@ -23,12 +24,21 @@ const initialState = {
 
 export default function info(state: State = initialState, action: Action): State {
   switch (action.type) {
+    case 'REQUEST_ROOT_INFO':
+      return {
+        ...state,
+        root: {
+          ...state.root,
+          isFetching: true
+        }
+      }
     case 'ROOT_INFO_RECEIVED':
       return {
         ...state,
         root: {
           ...state.root,
-          data: action.json
+          data: action.json,
+          isFetching: false
         }
       }
     case 'SECOND_INFO_RECEIVED':

@@ -6,7 +6,7 @@
 
 import { connect } from 'react-redux';
 import InfoView from '../components/InfoView';
-import { onRootInfoReceived } from '../actions';
+import { fetchRootInfo } from '../actions';
 import { ListView } from 'react-native';
 
 const dataSource = new ListView.DataSource({
@@ -16,13 +16,14 @@ const dataSource = new ListView.DataSource({
 const mapStateToProps = (state) => {
   return {
     dataSource: dataSource.cloneWithRows(state.info.root.data),
+    isFetching: state.info.root.isFetching
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onRootInfoReceived: (json: Array<Object>) => {
-      dispatch(onRootInfoReceived(json))
+    fetchRootInfo: () => {
+      dispatch(fetchRootInfo())
     }
   }
 }

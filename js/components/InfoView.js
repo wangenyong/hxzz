@@ -24,7 +24,8 @@ import {
 type Props = {
   navigator: Navigator;
   dataSource: any;
-  onRootInfoReceived: (json: Array<Object>) => void;
+  isFetching: boolean;
+  fetchRootInfo: () => void;
 }
 
 class InfoView extends Component {
@@ -38,17 +39,8 @@ class InfoView extends Component {
    * 当页面加载完成，发布获取新闻Action
    */
   componentDidMount(){
-    const { onRootInfoReceived } = this.props;
-
-    fetch('http://220.165.8.15:5000/get_class_by_id/0')
-    .then((response) => response.text())
-    .then((responseText) => JSON.parse(responseText))
-    .then((json) => {
-      onRootInfoReceived(json.data);
-    })
-    .catch((error) => {
-      console.warn(error);
-    });
+    const { fetchRootInfo } = this.props;
+    fetchRootInfo();
   }
 
   /**
@@ -93,6 +85,10 @@ class InfoView extends Component {
 
   render() {
     var backgroundColor = Colors.colorPrimary;
+    if (this.props.isFetching) {
+      return this._renderLoading();
+    }
+
     return (
       <View style={styles.container} >
         <Header
