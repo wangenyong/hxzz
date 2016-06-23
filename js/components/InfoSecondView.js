@@ -9,6 +9,7 @@ import React, { Component, PropTypes } from 'react';
 import Header from '../common/Header';
 import Colors from '../common/Colors';
 import styleUtils from '../common/styleUtils';
+import BackIcon from '../common/BackButtonIcon';
 import {
   View,
   Text,
@@ -31,9 +32,11 @@ type Props = {
 
 class InfoView extends Component {
   props: Props;
+  dismiss: () => void;
 
   constructor(props: Props) {
     super(props);
+    this.dismiss = this.dismiss.bind(this);
   }
 
   /**
@@ -74,6 +77,12 @@ class InfoView extends Component {
     return (
       <View style={styles.container} >
         <Header
+          leftItem={{
+            layout: 'icon',
+            title: 'Back',
+            icon: BackIcon,
+            onPress: this.dismiss
+          }}
           title="校园资讯"
           style={[{backgroundColor}]} />
         { /* 校园咨询根目录列表 */ }
@@ -86,6 +95,10 @@ class InfoView extends Component {
         />
       </View>
     )
+  }
+
+  dismiss() {
+    this.props.navigator.pop();
   }
 }
 
