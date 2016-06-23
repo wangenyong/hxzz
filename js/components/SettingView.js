@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
   },
   rowTitle: {
     fontSize: 16,
+    color: 'white'
   },
   center: {
     flex: 1,

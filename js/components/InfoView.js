@@ -56,7 +56,7 @@ class InfoView extends Component {
       <TouchableOpacity onPress={this._onPress.bind(this, item.class_id, item.class_name)} >
         <View style={styles.row}>
           <Text style={styles.rowTitle} >{item.class_name}</Text>
-          <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} />
+          <Icon name="ios-arrow-forward" size={20} color='white' />
         </View>
       </TouchableOpacity>
     );
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
   rowTitle: {
     flex: 1,
     fontSize: 16,
+    color: 'white'
   },
   center: {
     flex: 1,

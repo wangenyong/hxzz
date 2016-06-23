@@ -20,7 +20,7 @@ let itemCell = {
 }
 
 let listCell = {
-  backgroundColor: 'white',
+  backgroundColor: '#03A9F4',
   margin: 10,
   marginBottom: 0,
   borderRadius: 2,
