@@ -16,7 +16,8 @@ const dataSource = new ListView.DataSource({
 const mapStateToProps = (state) => {
   return {
     dataSource: dataSource.cloneWithRows(state.info.root.data),
-    isFetching: state.info.root.isFetching
+    isFetching: state.info.root.isFetching,
+    infoCount: state.info.root.data.length
   }
 }
 

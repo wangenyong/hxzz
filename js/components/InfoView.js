@@ -26,6 +26,7 @@ type Props = {
   dataSource: any;
   isFetching: boolean;
   fetchRootInfo: () => void;
+  infoCount: string;
 }
 
 class InfoView extends Component {
@@ -80,9 +81,14 @@ class InfoView extends Component {
         <Header
           title="校园资讯"
           style={[{backgroundColor}]} />
-          <PureListView
-            renderRow={this.renderRow}
-            {...this.props} />
+        <View style={styles.count} >
+          <Text>栏目数量： {this.props.infoCount}</Text>
+          <Text style={{marginLeft: 48}} >文章数量： 0</Text>
+        </View>
+        <PureListView
+          renderRow={this.renderRow}
+          {...this.props}
+        />
       </View>
     )
   }
@@ -110,6 +116,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  count: {
+    flexDirection: 'row',
+    margin: 10,
   }
 })
 
