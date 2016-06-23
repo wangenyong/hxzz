@@ -80,7 +80,9 @@ class InfoMixView extends Component {
     return (
       <TouchableOpacity onPress={this._onInfoPress.bind(this, id, title)} >
         <View style={styles.row}>
-          <Text style={styles.rowTitle} >{title}</Text>
+          <View style={styles.center}>
+            <Text style={styles.rowTitle} >{title}</Text>
+          </View>
           <Icon name="ios-arrow-forward" size={20} color='white' />
         </View>
       </TouchableOpacity>
@@ -163,7 +165,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   rowTitle: {
-    flex: 1,
     fontSize: 16,
     color: 'white'
   },
