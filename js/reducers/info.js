@@ -8,7 +8,8 @@ import type {Action} from '../actions/types';
 
 type State = {
   root: Object,
-  second: Object
+  second: Object,
+  third: Object
 }
 
 const initialState = {
@@ -19,6 +20,10 @@ const initialState = {
   second: {
     isFetching: false,
     data: [],
+    newsList: []
+  },
+  third: {
+    isFetching: false,
     newsList: []
   }
 };
@@ -38,6 +43,14 @@ export default function info(state: State = initialState, action: Action): State
         ...state,
         second: {
           ...state.second,
+          isFetching: true
+        }
+      }
+    case 'REQUEST_THIRD_NEWS':
+      return {
+        ...state,
+        third: {
+          ...state.third,
           isFetching: true
         }
       }
@@ -63,6 +76,15 @@ export default function info(state: State = initialState, action: Action): State
         ...state,
         second: {
           ...state.second,
+          newsList: action.json,
+          isFetching: false
+        }
+      }
+    case 'THIRD_NEWSLIST_RECEIVED':
+      return {
+        ...state,
+        third: {
+          ...state.third,
           newsList: action.json,
           isFetching: false
         }

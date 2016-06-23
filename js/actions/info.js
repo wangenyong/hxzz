@@ -110,3 +110,44 @@ export function onSecondNewsListReceived(json: Array<Object>): Action {
     json
   }
 }
+
+/**
+ * 开始获取三级新闻资讯
+ * @return {[类型]}
+ */
+export function requestThirdNews(): Action {
+  return {
+    type: 'REQUEST_THIRD_NEWS',
+  }
+}
+
+/**
+ * 从网络获取根目录资讯
+ * @return {[函数]} [执行网络fetch的函数]
+ */
+export function fetchThirdNews(id: string, username: string) {
+  return (dispatch: any) => {
+    dispatch(requestRootInfo())
+    return fetch('http://220.165.8.15:5000/get_news_by_cid/' + id + '/' + username)
+      .then((response) => response.text())
+      .then((responseText) => JSON.parse(responseText))
+      .then((json) => {
+        dispatch(onThirdNewsListReceived(json.data))
+      })
+      .catch((error) => {
+        console.warn(error);
+      });
+  }
+}
+
+/**
+ * 收到三级新闻资讯
+ * @param  {[数组]} json: Array<Object> [从网络返回的JSON数据]
+ * @return {[类型]}
+ */
+export function onThirdNewsListReceived(json: Array<Object>): Action {
+  return {
+    type: 'THIRD_NEWSLIST_RECEIVED',
+    json
+  }
+}

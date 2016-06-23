@@ -11,7 +11,9 @@ export type Action =
   | { type: 'SWITCH_TAB', tab: 'post' | 'info' | 'setting' }
   | { type: 'REQUEST_ROOT_INFO' }
   | { type: 'REQUEST_SECOND_INFO' }
+  | { type: 'REQUEST_THIRD_NEWS' }
   | { type: 'ROOT_INFO_RECEIVED', json: Array<Object> }
   | { type: 'SECOND_INFO_RECEIVED', json: Array<Object> }
   | { type: 'SECOND_NEWSLIST_RECEIVED', json: Array<Object> }
+  | { type: 'THIRD_NEWSLIST_RECEIVED', json: Array<Object> }
   ;
