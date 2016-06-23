@@ -30,6 +30,8 @@ type Props = {
   username: string;
   isFetching: boolean;
   fetchSecondInfo: (id: string, username: string) => void;
+  infoCount: string;
+  newsCount: string;
 }
 
 class InfoMixView extends Component {
@@ -129,6 +131,11 @@ class InfoMixView extends Component {
           title="校园资讯"
           style={[{backgroundColor}]} />
 
+          <View style={styles.count} >
+            <Text>栏目数量： {this.props.infoCount}</Text>
+            <Text style={{marginLeft: 48}} >文章数量： {this.props.newsCount}</Text>
+          </View>
+
           <PureListView
             renderRow={this.renderRow}
             {...this.props} />
@@ -188,6 +195,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  count: {
+    flexDirection: 'row',
+    margin: 10,
   }
 })
 
