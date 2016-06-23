@@ -30,7 +30,7 @@ type Props = {
   onNewsListReceived: (json: Array<Object>) => void;
 }
 
-class InfoView extends Component {
+class InfoMixView extends Component {
   props: Props;
   dismiss: () => void;
   _renderLink: (title: string) => void;
@@ -193,4 +193,4 @@ const styles = StyleSheet.create({
 
 const cards = StyleSheet.create(styleUtils.card)
 
-export default InfoView
+export default InfoMixView

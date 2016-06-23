@@ -5,7 +5,7 @@
 'use strict'
 
 import { connect } from 'react-redux';
-import InfoSecondView from '../components/InfoSecondView';
+import InfoMixView from '../components/InfoMixView';
 import { onSecondInfoReceived, onSecondNewsListReceived } from '../actions';
 import { ListView } from 'react-native';
 
@@ -30,4 +30,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InfoSecondView)
+export default connect(mapStateToProps, mapDispatchToProps)(InfoMixView)
