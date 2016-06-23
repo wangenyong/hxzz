@@ -5,7 +5,7 @@
 
 import type {Action} from './types';
 // Info action creators
-export function onRootInfoReceived(json: Object): Action {
+export function onRootInfoReceived(json: Array<Object>): Action {
   return {
     type: 'ROOT_INFO_RECEIVED',
     json

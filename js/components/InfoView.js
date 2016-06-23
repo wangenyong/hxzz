@@ -9,6 +9,7 @@ import React, { Component, PropTypes } from 'react';
 import Header from '../common/Header';
 import Colors from '../common/Colors';
 import styleUtils from '../common/styleUtils';
+import GiftedSpinner from 'react-native-gifted-spinner';
 import {
   View,
   Text,
@@ -23,7 +24,7 @@ import {
 type Props = {
   navigator: Navigator;
   dataSource: any;
-  onRootInfoReceived: (json: Object) => void;
+  onRootInfoReceived: (json: Array<Object>) => void;
 }
 
 class InfoView extends Component {
@@ -43,7 +44,7 @@ class InfoView extends Component {
     .then((response) => response.text())
     .then((responseText) => JSON.parse(responseText))
     .then((json) => {
-      onRootInfoReceived(json);
+      onRootInfoReceived(json.data);
     })
     .catch((error) => {
       console.warn(error);
@@ -76,6 +77,18 @@ class InfoView extends Component {
       name: 'InfoSecond',
       id
     })
+  }
+
+  /**
+   * 渲染 Loading
+   * @return 返回 Loading 指示器
+   */
+  _renderLoading() {
+    return (
+      <View style={styles.center}>
+        <GiftedSpinner styleAttr="Small" />
+      </View>
+    );
   }
 
   render() {
@@ -115,6 +128,11 @@ const styles = StyleSheet.create({
   rowTitle: {
     flex: 1,
     fontSize: 16,
+  },
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 

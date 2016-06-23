@@ -26,7 +26,10 @@ export default function info(state: State = initialState, action: Action): State
     case 'ROOT_INFO_RECEIVED':
       return {
         ...state,
-        root: action.json
+        root: {
+          ...state.root,
+          data: action.json
+        }
       }
     case 'SECOND_INFO_RECEIVED':
       return {

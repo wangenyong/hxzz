@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onRootInfoReceived: (json: Object) => {
+    onRootInfoReceived: (json: Array<Object>) => {
       dispatch(onRootInfoReceived(json))
     }
   }
