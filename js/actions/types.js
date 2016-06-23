@@ -10,4 +10,6 @@ export type Action =
   | { type: 'LOGGED_OUT' }
   | { type: 'SWITCH_TAB', tab: 'post' | 'info' | 'setting' }
   | { type: 'ROOT_INFO_RECEIVED', json: Object }
+  | { type: 'SECOND_INFO_RECEIVED', json: Object }
+  | { type: 'SECOND_NEWSLIST_RECEIVED', json: Object }
   ;

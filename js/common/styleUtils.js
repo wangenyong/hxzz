@@ -3,6 +3,7 @@
  */
 
 'use strict'
+import Colors from './Colors';
 
 let itemCell = {
   backgroundColor: 'white',
