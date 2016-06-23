@@ -28,6 +28,7 @@ type Props = {
   isFetching: boolean;
   fetchThirdNews: (id: string, username: string) => void;
   newsCount: string;
+  title: string;
 }
 
 class InfoThirdView extends Component {
@@ -89,7 +90,7 @@ class InfoThirdView extends Component {
           icon: BackIcon,
           onPress: this.dismiss
         }}
-          title="校园资讯"
+          title={this.props.title}
           style={[{backgroundColor}]} />
 
         <View style={styles.count} >

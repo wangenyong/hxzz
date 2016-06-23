@@ -46,12 +46,12 @@ var CYNavigator = React.createClass({
   renderScene: function(route: Route, navigator: Navigator) {
     if (route.name == 'InfoSecond') {
       return (
-        <InfoSecond id={route.id} navigator={navigator} />
+        <InfoSecond id={route.id} title={route.title} navigator={navigator} />
       )
     }
     if (route.name == 'InfoThird') {
       return (
-        <InfoThird id={route.id} navigator={navigator} />
+        <InfoThird id={route.id} title={route.title} navigator={navigator} />
       )
     }
     if (route.name == 'NewsDetail') {

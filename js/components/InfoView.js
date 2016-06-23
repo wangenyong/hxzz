@@ -53,7 +53,7 @@ class InfoView extends Component {
    */
   renderRow(item: any) {
     return (
-      <TouchableOpacity onPress={this._onPress.bind(this, item.class_id)} >
+      <TouchableOpacity onPress={this._onPress.bind(this, item.class_id, item.class_name)} >
         <View style={styles.row}>
           <Text style={styles.rowTitle} >{item.class_name}</Text>
           <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} />
@@ -67,10 +67,11 @@ class InfoView extends Component {
    * @param id 参数
    * @private
    */
-  _onPress(id: string) {
+  _onPress(id: string, title: string) {
     this.props.navigator.push({
       name: 'InfoSecond',
-      id
+      id,
+      title
     })
   }
 

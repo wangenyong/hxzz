@@ -32,6 +32,7 @@ type Props = {
   fetchSecondInfo: (id: string, username: string) => void;
   infoCount: string;
   newsCount: string;
+  title: string;
 }
 
 class InfoMixView extends Component {
@@ -77,7 +78,7 @@ class InfoMixView extends Component {
 
   _renderLink(title: string, id: string) {
     return (
-      <TouchableOpacity onPress={this._onInfoPress.bind(this, id)} >
+      <TouchableOpacity onPress={this._onInfoPress.bind(this, id, title)} >
         <View style={styles.row}>
           <Text style={styles.rowTitle} >{title}</Text>
           <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} />
@@ -101,10 +102,11 @@ class InfoMixView extends Component {
     )
   }
 
-  _onInfoPress(id: string) {
+  _onInfoPress(id: string, title: string) {
     this.props.navigator.push({
       name: 'InfoThird',
-      id
+      id,
+      title
     })
   }
 
@@ -128,7 +130,7 @@ class InfoMixView extends Component {
             icon: BackIcon,
             onPress: this.dismiss
           }}
-          title="校园资讯"
+          title={this.props.title}
           style={[{backgroundColor}]} />
 
           <View style={styles.count} >
