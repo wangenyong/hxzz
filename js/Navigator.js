@@ -11,6 +11,7 @@ import { switchTab } from './actions';
 import { connect } from 'react-redux';
 import InfoSecond from './containers/InfoSecond';
 import InfoThird from './containers/InfoThird';
+import NewsDetail from './containers/NewsDetail';
 import {
     AppRegistry,
     TouchableOpacity,
@@ -51,6 +52,11 @@ var CYNavigator = React.createClass({
     if (route.name == 'InfoThird') {
       return (
         <InfoThird id={route.id} navigator={navigator} />
+      )
+    }
+    if (route.name == 'NewsDetail') {
+      return (
+        <NewsDetail id={route.id} navigator={navigator} />
       )
     }
     return <Tabs navigator={navigator} />

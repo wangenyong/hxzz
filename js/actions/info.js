@@ -173,7 +173,7 @@ export function fetchNewsDetail(id: string, username: string) {
       .then((response) => response.text())
       .then((responseText) => JSON.parse(responseText))
       .then((json) => {
-        dispatch(onNewsDetailReceived(json.content.toLocaleString))
+        dispatch(onNewsDetailReceived(json.content))
       })
       .catch((error) => {
         console.warn(error);

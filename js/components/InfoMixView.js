@@ -68,7 +68,7 @@ class InfoMixView extends Component {
     } else {
       var date = new Date(item.updatetime);
       return (
-        this._renderNew(item.title, date.toLocaleString(), item.img)
+        this._renderNew(item.title, date.toLocaleString(), item.img, item.newsid)
       )
     }
   }
@@ -84,9 +84,9 @@ class InfoMixView extends Component {
     )
   }
 
-  _renderNew(title: string, date: string, img: string) {
+  _renderNew(title: string, date: string, img: string, id: string) {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this._onNewsPress.bind(this, id)} >
       <View style={styles.newsContainer} >
         <Image style={styles.newsImage} source={{uri: img}} />
         <View style={styles.newsTitleContainer} >
@@ -102,6 +102,13 @@ class InfoMixView extends Component {
   _onInfoPress(id: string) {
     this.props.navigator.push({
       name: 'InfoThird',
+      id
+    })
+  }
+
+  _onNewsPress(id: string) {
+    this.props.navigator.push({
+      name: 'NewsDetail',
       id
     })
   }
