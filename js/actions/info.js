@@ -151,3 +151,44 @@ export function onThirdNewsListReceived(json: Array<Object>): Action {
     json
   }
 }
+
+/**
+ * 开始获取新闻详情
+ * @return {[类型]}
+ */
+export function requestNewsDetail(): Action {
+  return {
+    type: 'REQUEST_NEWS_DETAIL',
+  }
+}
+
+/**
+ * 从网络获取新闻详情
+ * @return {[函数]} [执行网络fetch的函数]
+ */
+export function fetchNewsDetail(id: string, username: string) {
+  return (dispatch: any) => {
+    dispatch(requestNewsDetail())
+    return fetch('http://220.165.8.15:5000/get_news_by_id/' + id + '/' + username)
+      .then((response) => response.text())
+      .then((responseText) => JSON.parse(responseText))
+      .then((json) => {
+        dispatch(onNewsDetailReceived(json.content.toLocaleString))
+      })
+      .catch((error) => {
+        console.warn(error);
+      });
+  }
+}
+
+/**
+ * 收到新闻详情
+ * @param  {[数组]} json: Array<Object> [从网络返回的JSON数据]
+ * @return {[类型]}
+ */
+export function onNewsDetailReceived(json: string): Action {
+  return {
+    type: 'NEWS_DETAIL_RECEIVED',
+    json
+  }
+}
