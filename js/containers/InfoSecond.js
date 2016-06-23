@@ -6,7 +6,7 @@
 
 import { connect } from 'react-redux';
 import InfoMixView from '../components/InfoMixView';
-import { onSecondInfoReceived, onSecondNewsListReceived } from '../actions';
+import { fetchSecondInfo } from '../actions';
 import { ListView } from 'react-native';
 
 const dataSource = new ListView.DataSource({
@@ -16,16 +16,15 @@ const dataSource = new ListView.DataSource({
 const mapStateToProps = (state) => {
   return {
     dataSource: dataSource.cloneWithRows(state.info.second.data.concat(state.info.second.newsList)),
+    username: state.user.username,
+    isFetching: state.info.second.isFetching
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onInfoReceived: (json: Array<Object>) => {
-      dispatch(onSecondInfoReceived(json))
-    },
-    onNewsListReceived: (json: Array<Object> ) => {
-      dispatch(onSecondNewsListReceived(json))
+    fetchSecondInfo: (id: string, username: string) => {
+      dispatch(fetchSecondInfo(id, username))
     }
   }
 }

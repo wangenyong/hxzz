@@ -17,6 +17,7 @@ const initialState = {
     data: []
   },
   second: {
+    isFetching: false,
     data: [],
     newsList: []
   }
@@ -29,6 +30,14 @@ export default function info(state: State = initialState, action: Action): State
         ...state,
         root: {
           ...state.root,
+          isFetching: true
+        }
+      }
+    case 'REQUEST_SECOND_INFO':
+      return {
+        ...state,
+        second: {
+          ...state.second,
           isFetching: true
         }
       }
@@ -54,7 +63,8 @@ export default function info(state: State = initialState, action: Action): State
         ...state,
         second: {
           ...state.second,
-          newsList: action.json
+          newsList: action.json,
+          isFetching: false
         }
       }
     default:
