@@ -24,10 +24,9 @@ import {
 type Props = {
   navigator: Navigator;
   id: string;
-  infoDataSource: any;
-  newsDataSource: any;
+  dataSource: any;
   onInfoReceived: (json: Array<Object>) => void;
-  onNewsListReceived: (json: Object) => void;
+  onNewsListReceived: (json: Array<Object>) => void;
 }
 
 class InfoView extends Component {
@@ -43,14 +42,23 @@ class InfoView extends Component {
    * 当页面加载完成，发布获取新闻Action
    */
   componentDidMount(){
-    const { id, onInfoReceived } = this.props;
+    const { id, onInfoReceived, onNewsListReceived } = this.props;
 
     fetch('http://220.165.8.15:5000/get_class_by_id/' + id)
     .then((response) => response.text())
     .then((responseText) => JSON.parse(responseText))
     .then((json) => {
-      console.log(json);
       onInfoReceived(json.data);
+
+      fetch('http://220.165.8.15:5000/get_news_by_cid/' + id + '/董亮')
+      .then((response) => response.text())
+      .then((responseText) => JSON.parse(responseText))
+      .then((json) => {
+        onNewsListReceived(json.newslist);
+      })
+      .catch((error) => {
+        console.warn(error);
+      });
     })
     .catch((error) => {
       console.warn(error);
@@ -66,7 +74,7 @@ class InfoView extends Component {
     return (
       <TouchableOpacity>
         <View style={styles.row}>
-          <Text style={styles.rowTitle} >{item.class_name}</Text>
+          <Text style={styles.rowTitle} ></Text>
           <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} />
         </View>
       </TouchableOpacity>
@@ -88,7 +96,7 @@ class InfoView extends Component {
           style={[{backgroundColor}]} />
         { /* 校园咨询根目录列表 */ }
         <ListView style={styles.listView}
-          dataSource={this.props.infoDataSource}
+          dataSource={this.props.dataSource}
           renderRow={(rowData) => this._renderRow(rowData)}
           enableEmptySections={true}
           contentInset={{top:0, left:0, bottom: 64, right: 0}}

@@ -9,18 +9,13 @@ import InfoSecondView from '../components/InfoSecondView';
 import { onSecondInfoReceived, onSecondNewsListReceived } from '../actions';
 import { ListView } from 'react-native';
 
-const infoDataSource = new ListView.DataSource({
-  rowHasChanged: (r1, r2) => r1 !== r2,
-});
-
-const newsDataSource = new ListView.DataSource({
+const dataSource = new ListView.DataSource({
   rowHasChanged: (r1, r2) => r1 !== r2,
 });
 
 const mapStateToProps = (state) => {
   return {
-    infoDataSource: infoDataSource.cloneWithRows(state.info.second.data),
-    newsDataSource: newsDataSource.cloneWithRows(state.info.second.newsList)
+    dataSource: dataSource.cloneWithRows(state.info.second.data.concat(state.info.second.newsList)),
   }
 }
 
@@ -29,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
     onInfoReceived: (json: Array<Object>) => {
       dispatch(onSecondInfoReceived(json))
     },
-    onNewsListReceived: (json: Object) => {
+    onNewsListReceived: (json: Array<Object> ) => {
       dispatch(onSecondNewsListReceived(json))
     }
   }

@@ -19,7 +19,7 @@ export function onSecondInfoReceived(json: Array<Object>): Action {
   }
 }
 
-export function onSecondNewsListReceived(json: Object): Action {
+export function onSecondNewsListReceived(json: Array<Object>): Action {
   return {
     type: 'SECOND_NEWSLIST_RECEIVED',
     json
