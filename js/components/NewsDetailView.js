@@ -25,6 +25,7 @@ type Props = {
   navigator: Navigator;
   detail: string;
   id: string;
+  title: string;
   username: string;
   isFetching: boolean;
   fetchNewsDetail: (id: string, username: string) => void;
@@ -69,7 +70,7 @@ class NewsDetailView extends Component {
           icon: BackIcon,
           onPress: this.dismiss
         }}
-        title="校园资讯"
+        title={this.props.title}
         style={[{backgroundColor}]} />
         { content }
       </View>

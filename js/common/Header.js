@@ -108,7 +108,7 @@ class CYHeaderIOS extends Component {
     const itemsColor = foreground === 'dark' ? Colors.lightText : 'white';
 
     const content = React.Children.count(this.props.children) === 0
-      ? <Text style={[styles.titleText, {color: titleColor}]}>
+      ? <Text style={[styles.titleText, {color: titleColor}]} numberOfLines={1} >
           {title}
         </Text>
       : this.props.children;

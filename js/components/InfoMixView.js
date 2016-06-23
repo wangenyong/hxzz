@@ -86,7 +86,7 @@ class InfoMixView extends Component {
 
   _renderNew(title: string, date: string, img: string, id: string) {
     return (
-      <TouchableOpacity onPress={this._onNewsPress.bind(this, id)} >
+      <TouchableOpacity onPress={this._onNewsPress.bind(this, id, title)} >
       <View style={styles.newsContainer} >
         <Image style={styles.newsImage} source={{uri: img}} />
         <View style={styles.newsTitleContainer} >
@@ -106,10 +106,11 @@ class InfoMixView extends Component {
     })
   }
 
-  _onNewsPress(id: string) {
+  _onNewsPress(id: string, title: string) {
     this.props.navigator.push({
       name: 'NewsDetail',
-      id
+      id,
+      title
     })
   }
 

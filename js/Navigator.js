@@ -56,7 +56,7 @@ var CYNavigator = React.createClass({
     }
     if (route.name == 'NewsDetail') {
       return (
-        <NewsDetail id={route.id} navigator={navigator} />
+        <NewsDetail id={route.id} title={route.title} navigator={navigator} />
       )
     }
     return <Tabs navigator={navigator} />

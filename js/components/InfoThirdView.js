@@ -56,7 +56,7 @@ class InfoThirdView extends Component {
   renderRow(item: any) {
     var date = new Date(item.updatetime);
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this._onNewsPress.bind(this, item.newsid, item.title)} >
         <View style={styles.newsContainer} >
           <Image style={styles.newsImage} source={{uri: item.img}} />
           <View style={styles.newsTitleContainer} >
@@ -69,15 +69,11 @@ class InfoThirdView extends Component {
     );
   }
 
-  /**
-   * 给Navigator传递参数
-   * @param id 参数
-   * @private
-   */
-  _onPress(id: string) {
+  _onNewsPress(id: string, title: string) {
     this.props.navigator.push({
-      name: 'InfoSecond',
-      id
+      name: 'NewsDetail',
+      id,
+      title
     })
   }
 
