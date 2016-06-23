@@ -48,15 +48,15 @@ class PostView extends Component {
           style={[{backgroundColor}]} />
 
           <TouchableOpacity onPress={this._onPress.bind(this, '100', '规章制度')} >
-            <View style={styles.row}>
+            <View style={[styles.row, {backgroundColor: '#03a9f4'}]}>
               <Text style={styles.rowTitle} >规章制度</Text>
-              <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} />
+              <Icon name="ios-arrow-forward" size={20} color='white' />
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={this._onPress.bind(this, '81', '校务通知')} >
-            <View style={styles.row}>
+            <View style={[styles.row, {backgroundColor: Colors.colorPrimary}]}>
               <Text style={styles.rowTitle} >校务通知</Text>
-              <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} />
+              <Icon name="ios-arrow-forward" size={20} color='white' />
             </View>
           </TouchableOpacity>
       </View>
@@ -75,11 +75,12 @@ const styles = StyleSheet.create({
     padding: 12,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   rowTitle: {
     flex: 1,
     fontSize: 16,
+    color: 'white'
   },
   center: {
     flex: 1,
