@@ -18,7 +18,8 @@ import {
   Dimensions,
   TextInput,
   ListView,
-  Navigator
+  Navigator,
+  Image
 } from 'react-native';
 
 type Props = {
@@ -32,10 +33,14 @@ type Props = {
 class InfoView extends Component {
   props: Props;
   dismiss: () => void;
+  _renderLink: (title: string) => void;
+  _renderNew: (title: string, date: string, img: string) => void;
 
   constructor(props: Props) {
     super(props);
     this.dismiss = this.dismiss.bind(this);
+    this._renderLink = this._renderLink.bind(this);
+    this._renderNew = this._renderNew.bind(this);
   }
 
   /**
@@ -71,14 +76,42 @@ class InfoView extends Component {
    * @return 返回样式格式化后的内容
    */
   _renderRow(item: any) {
+    if (item.class_id) {
+      return (
+        this._renderLink(item.class_name)
+      )
+    } else {
+      var date = new Date(item.updatetime);
+      return (
+        this._renderNew(item.title, date.toLocaleString(), item.img)
+      )
+    }
+  }
+
+  _renderLink(title: string) {
     return (
       <TouchableOpacity>
         <View style={styles.row}>
-          <Text style={styles.rowTitle} ></Text>
+          <Text style={styles.rowTitle} >{title}</Text>
           <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} />
         </View>
       </TouchableOpacity>
-    );
+    )
+  }
+
+  _renderNew(title: string, date: string, img: string) {
+    return (
+      <TouchableOpacity>
+      <View style={styles.newsContainer} >
+        <Image style={styles.newsImage} source={{uri: img}} />
+        <View style={styles.newsTitleContainer} >
+          <Text numberOfLines={1} >{title}</Text>
+          <Text numberOfLines={1} style={styles.newsDate} >{date}</Text>
+        </View >
+        <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} style={{margin: 15}} />
+      </View>
+      </TouchableOpacity>
+    )
   }
 
   render() {
@@ -128,6 +161,33 @@ const styles = StyleSheet.create({
   rowTitle: {
     flex: 1,
     fontSize: 16,
+  },
+  newsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingTop: 10,
+    borderBottomWidth: 0.5,
+    borderBottomColor: 'lightgray',
+    marginLeft: 10,
+    alignItems: 'center'
+  },
+  newsImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25
+  },
+  newsTitleContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    marginLeft: 10
+  },
+  newsTitle: {
+
+  },
+  newsDate: {
+    fontSize: 12,
+    color: 'darkgray',
+    marginTop: 5
   }
 })
 
