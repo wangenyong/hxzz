@@ -16,10 +16,12 @@ import {
   TouchableOpacity,
   Dimensions,
   TextInput,
-  ListView
+  ListView,
+  Navigator
 } from 'react-native';
 
 type Props = {
+  navigator: Navigator;
   dataSource: any;
   onRootInfoReceived: (json: Object) => void;
 }
@@ -55,13 +57,25 @@ class InfoView extends Component {
    */
   _renderRow(item: any) {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this._onPress.bind(this, item.class_id)} >
         <View style={styles.row}>
           <Text style={styles.rowTitle} >{item.class_name}</Text>
           <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} />
         </View>
       </TouchableOpacity>
     );
+  }
+
+  /**
+   * 给Navigator传递参数
+   * @param id 参数
+   * @private
+   */
+  _onPress(id: string) {
+    this.props.navigator.push({
+      name: 'InfoSecond',
+      id
+    })
   }
 
   render() {

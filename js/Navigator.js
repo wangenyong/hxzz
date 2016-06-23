@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Tabs from './containers/Tabs';
 import { switchTab } from './actions';
 import { connect } from 'react-redux';
+import InfoSecond from './containers/InfoSecond';
 import {
     AppRegistry,
     TouchableOpacity,
@@ -41,6 +42,12 @@ var CYNavigator = React.createClass({
   },
 
   renderScene: function(route: Route, navigator: Navigator) {
+    if (route.name == 'InfoSecond') {
+      return (
+        <InfoSecond id={route.id} navigator={navigator} />
+      )
+    }
+
     return <Tabs navigator={navigator} />
   }
 });

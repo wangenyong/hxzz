@@ -16,10 +16,12 @@ import {
   TouchableOpacity,
   Dimensions,
   TextInput,
-  ListView
+  ListView,
+  Navigator
 } from 'react-native';
 
 type Props = {
+  navigator: Navigator;
   id: string;
   infoDataSource: any;
   newsDataSource: any;
