@@ -27,6 +27,7 @@ type Props = {
   username: string;
   isFetching: boolean;
   fetchThirdNews: (id: string, username: string) => void;
+  newsCount: string;
 }
 
 class InfoThirdView extends Component {
@@ -90,9 +91,16 @@ class InfoThirdView extends Component {
         }}
           title="校园资讯"
           style={[{backgroundColor}]} />
-          <PureListView
-            renderRow={this.renderRow}
-            {...this.props} />
+
+        <View style={styles.count} >
+          <Text>栏目数量： 0</Text>
+          <Text style={{marginLeft: 48}} >文章数量： {this.props.newsCount}</Text>
+        </View>
+
+        <PureListView
+          renderRow={this.renderRow}
+          {...this.props}
+        />
       </View>
     )
   }
@@ -134,6 +142,10 @@ const styles = StyleSheet.create({
     color: 'darkgray',
     marginTop: 5
   },
+  count: {
+    flexDirection: 'row',
+    margin: 10,
+  }
 })
 
 export default InfoThirdView

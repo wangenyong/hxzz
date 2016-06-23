@@ -17,7 +17,8 @@ const mapStateToProps = (state) => {
   return {
     dataSource: dataSource.cloneWithRows(state.info.third.newsList),
     username: state.user.username,
-    isFetching: state.info.third.isFetching
+    isFetching: state.info.third.isFetching,
+    newsCount: state.info.third.newsList.length,
   }
 }
 
