@@ -98,7 +98,7 @@ class InfoMixView extends Component {
           <Text numberOfLines={1} >{title}</Text>
           <Text numberOfLines={1} style={styles.newsDate} >{date}</Text>
         </View >
-        <Icon name="ios-arrow-forward" size={20} color={Colors.colorPrimary} style={{margin: 15}} />
+        <Icon name="ios-arrow-forward" size={20} color='dimgray' style={{margin: 15}} />
       </View>
       </TouchableOpacity>
     )
