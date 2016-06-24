@@ -36,8 +36,8 @@ class SigninView extends Component {
   constructor(props: Props) {
     super(props);
     this.state = {
-      username: '董亮',
-      password: '123456',
+      username: '',
+      password: '',
       isLoading: false
     }
   }
