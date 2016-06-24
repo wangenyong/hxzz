@@ -16,7 +16,8 @@ import {
   TouchableOpacity,
   Dimensions,
   TextInput,
-  Navigator
+  Navigator,
+  Image
 } from 'react-native';
 
 type Props = {
@@ -47,22 +48,25 @@ class PostView extends Component {
           title="通知公告"
           style={[{backgroundColor}]} />
 
-          <TouchableOpacity onPress={this._onPress.bind(this, '100', '规章制度')} >
-            <View style={[styles.row, {backgroundColor: '#03a9f4'}]}>
-              <View style={styles.center} >
-                <Text style={styles.rowTitle} >规章制度</Text>
-              </View>
-              <Icon name="ios-arrow-forward" size={20} color='white' />
+        <Image style={styles.school} resizeMode='cover'
+          source={require('./img/school.png')} />
+
+        <TouchableOpacity onPress={this._onPress.bind(this, '100', '规章制度')} >
+          <View style={[styles.row, {backgroundColor: '#03a9f4'}]}>
+            <View style={styles.center} >
+              <Text style={styles.rowTitle} >规章制度</Text>
             </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this._onPress.bind(this, '81', '校务通知')} >
-            <View style={[styles.row, {backgroundColor: Colors.colorPrimary}]}>
-              <View style={styles.center} >
-                <Text style={styles.rowTitle} >校务通知</Text>
-              </View>
-              <Icon name="ios-arrow-forward" size={20} color='white' />
+            <Icon name="ios-arrow-forward" size={20} color='white' />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this._onPress.bind(this, '81', '校务通知')} >
+          <View style={[styles.row, {backgroundColor: Colors.colorPrimary}]}>
+            <View style={styles.center} >
+              <Text style={styles.rowTitle} >校务通知</Text>
             </View>
-          </TouchableOpacity>
+            <Icon name="ios-arrow-forward" size={20} color='white' />
+          </View>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -84,6 +88,10 @@ const styles = StyleSheet.create({
   rowTitle: {
     fontSize: 16,
     color: 'white'
+  },
+  school: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').width*274/480
   },
   center: {
     flex: 1,
