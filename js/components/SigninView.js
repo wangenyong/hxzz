@@ -52,7 +52,7 @@ class SigninView extends Component {
     // Show spinner
     this.setState({isLoading: true});
 
-    fetch('http://220.165.8.15:5000/login/' + this.state.username + '/' + this.state.password)
+    fetch('http://www.ynhxzz.cn:5000/login/' + this.state.username + '/' + this.state.password)
     .then((response) => response.text())
     .then((responseText) => JSON.parse(responseText))
     .then((json) => {
@@ -68,7 +68,7 @@ class SigninView extends Component {
       <KeyboardAwareScrollView style={styles.container} >
         <View style={styles.header} /* Logo */ >
           <Image
-            source={require('./img/icon.png')} />
+            source={require('./img/logo.png')} />
         </View>
         <View style={styles.title}  /* 标题 */ >
           <Text style={{fontSize: 20}} > 云南省华夏中等专业学校 </Text>

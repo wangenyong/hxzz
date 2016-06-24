@@ -24,7 +24,7 @@ export function requestRootInfo(): Action {
 export function fetchRootInfo() {
   return (dispatch: any) => {
     dispatch(requestRootInfo())
-    return fetch('http://220.165.8.15:5000/get_class_by_id/0')
+    return fetch('http://www.ynhxzz.cn:5000/get_class_by_id/0')
       .then((response) => response.text())
       .then((responseText) => JSON.parse(responseText))
       .then((json) => {
@@ -65,13 +65,13 @@ export function requestSecondInfo(): Action {
 export function fetchSecondInfo(id: string, username: string) {
   return (dispatch: any) => {
     dispatch(requestSecondInfo())
-    return  fetch('http://220.165.8.15:5000/get_class_by_id/' + id)
+    return  fetch('http://www.ynhxzz.cn:5000/get_class_by_id/' + id)
       .then((response) => response.text())
       .then((responseText) => JSON.parse(responseText))
       .then((json) => {
         dispatch(onSecondInfoReceived(json.data));
 
-        fetch('http://220.165.8.15:5000/get_news_by_cid/' + id + '/' + username)
+        fetch('http://www.ynhxzz.cn:5000/get_news_by_cid/' + id + '/' + username)
         .then((response) => response.text())
         .then((responseText) => JSON.parse(responseText))
         .then((json) => {
@@ -128,7 +128,7 @@ export function requestThirdNews(): Action {
 export function fetchThirdNews(id: string, username: string) {
   return (dispatch: any) => {
     dispatch(requestThirdNews())
-    return fetch('http://220.165.8.15:5000/get_news_by_cid/' + id + '/' + username)
+    return fetch('http://www.ynhxzz.cn:5000/get_news_by_cid/' + id + '/' + username)
       .then((response) => response.text())
       .then((responseText) => JSON.parse(responseText))
       .then((json) => {
@@ -169,7 +169,7 @@ export function requestNewsDetail(): Action {
 export function fetchNewsDetail(id: string, username: string) {
   return (dispatch: any) => {
     dispatch(requestNewsDetail())
-    return fetch('http://220.165.8.15:5000/get_news_by_id/' + id + '/' + username)
+    return fetch('http://www.ynhxzz.cn:5000/get_news_by_id/' + id + '/' + username)
       .then((response) => response.text())
       .then((responseText) => JSON.parse(responseText))
       .then((json) => {
