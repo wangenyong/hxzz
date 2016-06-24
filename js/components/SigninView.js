@@ -30,7 +30,8 @@ class SigninView extends Component {
   state: {
     username: string,
     password: string,
-    isLoading: boolean
+    isLoading: boolean,
+    error: string
   };
 
   constructor(props: Props) {
@@ -38,7 +39,8 @@ class SigninView extends Component {
     this.state = {
       username: '',
       password: '',
-      isLoading: false
+      isLoading: false,
+      error: ''
     }
   }
 
@@ -59,7 +61,7 @@ class SigninView extends Component {
       onLoginSuccess(json);
     })
     .catch((error) => {
-      console.warn(error);
+      this.setState({isLoading: false, error: '用户名或密码错误，请检查'});
     });
   }
 
@@ -103,6 +105,9 @@ class SigninView extends Component {
               onPress={() => this._signingIn()} >
               登录
             </Button>
+          </View>
+          <View style={styles.error} >
+            <Text style={{color: 'red'}} >{this.state.error}</Text>
           </View>
         </View>
       </KeyboardAwareScrollView>
@@ -148,6 +153,12 @@ const styles = StyleSheet.create({
   },
   greyFont: {
     color: 'darkgray'
+  },
+  error: {
+    flex: 1,
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 })
 
