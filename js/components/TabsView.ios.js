@@ -10,7 +10,7 @@ import type { Tab } from '../reducers/navigation';
 import Colors from '../common/Colors';
 import PostView from '../components/PostView';
 import Info from '../containers/Info';
-import SettingView from '../components/SettingView';
+import Setting from '../containers/Setting';
 import {
   View,
   Text,
@@ -75,7 +75,7 @@ class TabsView extends Component {
           selected={this.props.tab === 'setting'}
           onPress={this.onTabSelect.bind(this, 'setting')}
           >
-          <SettingView navigator={this.props.navigator} />
+          <Setting navigator={this.props.navigator} />
         </Icon.TabBarItem>
       </TabBarIOS>
     )

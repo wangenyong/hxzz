@@ -22,6 +22,7 @@ import {
 type Props = {
   realname: string;
   username: string;
+  logOut: () => void;
 }
 
 class SettingView extends Component {
@@ -32,7 +33,7 @@ class SettingView extends Component {
   }
 
   _logout() {
-
+    this.props.logOut();
   }
 
   render() {
@@ -81,11 +82,4 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapStateToProps = (state) => {
-  return {
-    realname: state.user.realname,
-    username: state.user.username,
-  }
-}
-
-export default connect(mapStateToProps)(SettingView)
+export default SettingView
