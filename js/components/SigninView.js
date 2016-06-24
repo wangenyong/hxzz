@@ -15,7 +15,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
-  TextInput
+  TextInput,
+  Image
 } from 'react-native';
 
 type Props = {
@@ -64,47 +65,47 @@ class SigninView extends Component {
 
   render() {
     return (
-      <View style={styles.container} >
-        <KeyboardAwareScrollView style={{flex: 1}} >
-          <View style={styles.header} /* Logo */ >
-          </View>
-          <View style={styles.title}  /* 标题 */ >
+      <KeyboardAwareScrollView style={styles.container} >
+        <View style={styles.header} /* Logo */ >
+          <Image
+            source={require('./img/icon.png')} />
+        </View>
+        <View style={styles.title}  /* 标题 */ >
           <Text style={{fontSize: 20}} > 云南省华夏中等专业学校 </Text>
           <Text style={{fontSize: 20, marginTop: 10}} > 综合办公自动化系统手机端 </Text>
+        </View>
+        <View style={styles.inputs} /* 输入组件 */  >
+          <View style={styles.inputContainer} /* 用户名 */ >
+            <Icon name="ios-person" size={24} color={Colors.colorPrimary} />
+            <TextInput
+              style={[styles.input, styles.greyFont]}
+              placeholder="请输入OA系统用户名"
+              placeholderTextColor="darkgray"
+              onChangeText={(text) => this.setState({username: text})}
+            />
           </View>
-          <View style={styles.inputs} /* 输入组件 */  >
-            <View style={styles.inputContainer} /* 用户名 */ >
-              <Icon name="ios-person" size={24} color={Colors.colorPrimary} />
-              <TextInput
-                style={[styles.input, styles.greyFont]}
-                placeholder="请输入OA系统用户名"
-                placeholderTextColor="darkgray"
-                onChangeText={(text) => this.setState({username: text})}
-              />
-            </View>
-            <View style={styles.inputContainer} /* 密码 */ >
-              <Icon name="ios-lock" size={22} color={Colors.colorPrimary} />
-              <TextInput
-                password={true}
-                style={[styles.input, styles.greyFont]}
-                placeholder="请输入OA系统登录密码"
-                placeholderTextColor="darkgray"
-                onChangeText={(text) => this.setState({password: text})}
-              />
-            </View>
-            <View style={styles.signin} /* 登录按钮 */ >
-              <Button
-                style={{backgroundColor: Colors.colorPrimary, borderColor: 'darkgray'}}
-                textStyle={{fontSize: 18, color: 'white'}}
-                isLoading={this.state.isLoading}
-                activityIndicatorColor='white'
-                onPress={() => this._signingIn()} >
-                登录
-              </Button>
-            </View>
+          <View style={styles.inputContainer} /* 密码 */ >
+            <Icon name="ios-lock" size={22} color={Colors.colorPrimary} />
+            <TextInput
+              password={true}
+              style={[styles.input, styles.greyFont]}
+              placeholder="请输入OA系统登录密码"
+              placeholderTextColor="darkgray"
+              onChangeText={(text) => this.setState({password: text})}
+            />
           </View>
-        </KeyboardAwareScrollView>
-      </View>
+          <View style={styles.signin} /* 登录按钮 */ >
+            <Button
+              style={{backgroundColor: Colors.colorPrimary, borderColor: 'darkgray'}}
+              textStyle={{fontSize: 18, color: 'white'}}
+              isLoading={this.state.isLoading}
+              activityIndicatorColor='white'
+              onPress={() => this._signingIn()} >
+              登录
+            </Button>
+          </View>
+        </View>
+      </KeyboardAwareScrollView>
     )
   }
 }
@@ -112,19 +113,20 @@ class SigninView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     padding: 26
   },
   header: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    marginTop: 200
+    marginTop: 50,
+    marginBottom: 50
   },
   title: {
     alignItems: 'center',
   },
   inputs: {
+    marginTop: 20
   },
   inputContainer: {
     flexDirection: 'row',
