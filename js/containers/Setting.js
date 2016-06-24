@@ -6,7 +6,7 @@
 
 import { connect } from 'react-redux';
 import SettingView from '../components/SettingView';
-import { loggedOut } from '../actions';
+import { loggedOut, switchTab } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -19,6 +19,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logOut: () => {
       dispatch(loggedOut())
+    },
+    switchHome: () => {
+      dispatch(switchTab('post'))
     }
   }
 }

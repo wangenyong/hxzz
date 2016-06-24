@@ -23,6 +23,7 @@ type Props = {
   realname: string;
   username: string;
   logOut: () => void;
+  switchHome: () => void;
 }
 
 class SettingView extends Component {
@@ -34,6 +35,7 @@ class SettingView extends Component {
 
   _logout() {
     this.props.logOut();
+    this.props.switchHome();
   }
 
   render() {
