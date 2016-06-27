@@ -22,6 +22,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -41,6 +43,15 @@
 		<string>MaterialIcons.ttf</string>
 		<string>Octicons.ttf</string>
 		<string>Zocial.ttf</string>
+	</array>
+	<key>UILaunchImages</key>
+	<array>
+		<dict>
+			<key>UILaunchImageName</key>
+			<string>Default-568</string>
+			<key>UILaunchImageSize</key>
+			<string>{320, 568}</string>
+		</dict>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -29,6 +29,7 @@
 		3B42AED86F594DECADCDC28C /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B149D4A9A6824D598858A50F /* libRNVectorIcons.a */; };
 		67E9262D3639487C8FEBA1F2 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9147D7CC4C70487087B374AA /* Ionicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		C03385631D1D30AD00C9A042 /* Default-568.png in Resources */ = {isa = PBXBuildFile; fileRef = C03385621D1D30AD00C9A042 /* Default-568.png */; };
 		F0E6B226C1F246549109B889 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C557A055741474AA19F68A4 /* Zocial.ttf */; };
 		F7DFFF0550D940E2943AFC8A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8705AE37050845D8A5F94D39 /* FontAwesome.ttf */; };
 /* End PBXBuildFile section */
@@ -152,6 +153,7 @@
 		9147D7CC4C70487087B374AA /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		ABD405F1920F4D06B3A56D63 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		B149D4A9A6824D598858A50F /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		C03385621D1D30AD00C9A042 /* Default-568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +332,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				C03385621D1D30AD00C9A042 /* Default-568.png */,
 				13B07FAE1A68108700A75B9A /* hxzz */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* hxzzTests */,
@@ -569,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C03385631D1D30AD00C9A042 /* Default-568.png in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				1AACF61551EB4F0E9E6658C6 /* Entypo.ttf in Resources */,
 				19E846E2B9D7455E94910814 /* EvilIcons.ttf in Resources */,
