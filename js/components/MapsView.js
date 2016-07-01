@@ -29,6 +29,11 @@ class MapsView extends Component {
         <Header
           title="位置协同"
           style={[{backgroundColor}]} />
+
+        <MapView
+          style={{flex: 1}}
+          showsUserLocation={true}
+          followUserLocation={true} />
       </View>
     )
   }
