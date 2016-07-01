@@ -23,11 +23,28 @@ import {
 class MapsView extends Component {
 
   render() {
+    var backgroundColor = Colors.colorPrimary;
     return (
-      <MapView />
+      <View style={styles.container} >
+        <Header
+          title="位置协同"
+          style={[{backgroundColor}]} />
+      </View>
     )
   }
 
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    ...styleUtils.containerBg
+  },
+  center: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+})
 
 export default MapsView

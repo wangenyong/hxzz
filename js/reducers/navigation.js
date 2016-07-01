@@ -9,6 +9,7 @@ import type {Action} from '../actions/types';
 export type Tab =
     'post'
   | 'info'
+  | 'map'
   | 'setting'
 
 type State = {

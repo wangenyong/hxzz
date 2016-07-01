@@ -11,6 +11,7 @@ import Colors from '../common/Colors';
 import PostView from '../components/PostView';
 import Info from '../containers/Info';
 import Setting from '../containers/Setting';
+import MapsView from '../components/MapsView';
 import {
   View,
   Text,
@@ -67,6 +68,15 @@ class TabsView extends Component {
           onPress={this.onTabSelect.bind(this, 'info')}
           >
           <Info navigator={this.props.navigator} />
+        </Icon.TabBarItem>
+        <Icon.TabBarItem
+          title="位置协同"
+          iconName="ios-locate-outline"
+          selectedIconName="ios-locate"
+          selected={this.props.tab === 'map'}
+          onPress={this.onTabSelect.bind(this, 'map')}
+          >
+          <MapsView navigator={this.props.navigator} />
         </Icon.TabBarItem>
         <Icon.TabBarItem
           title="系统设置"

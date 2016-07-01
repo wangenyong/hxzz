@@ -5,7 +5,7 @@
 
 import type {Action} from './types';
 
-type Tab = 'post' | 'info' | 'setting';
+type Tab = 'post' | 'info' | 'map' | 'setting';
 
 // Navigation action creators
 export function switchTab(tab: Tab): Action {

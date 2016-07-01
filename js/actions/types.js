@@ -8,7 +8,7 @@ export type Action =
     { type: 'USER_LOGIN_SUCCESS', json: Object }
   | { type: 'USER_LOGIN_ERROR' }
   | { type: 'LOGGED_OUT' }
-  | { type: 'SWITCH_TAB', tab: 'post' | 'info' | 'setting' }
+  | { type: 'SWITCH_TAB', tab: 'post' | 'info' | 'map' | 'setting' }
   | { type: 'REQUEST_ROOT_INFO' }
   | { type: 'REQUEST_SECOND_INFO' }
   | { type: 'REQUEST_THIRD_NEWS' }
