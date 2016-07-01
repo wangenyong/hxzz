@@ -686,6 +686,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -701,7 +702,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fql.hxzz;
 				PRODUCT_NAME = hxzz;
-				PROVISIONING_PROFILE = "109bbf91-2017-4c74-9d0b-bdea88a81f9a";
+				PROVISIONING_PROFILE = "4df3f7bd-f87e-421b-9e4c-3fca7ad68b3e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
