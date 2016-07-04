@@ -72,7 +72,8 @@ class MapsView extends Component {
           onRegionChange={this._onRegionChange.bind(this)}
           onRegionChangeComplete={this._onRegionChangeComplete.bind(this)}
           annotations={this.props.annotations}
-          showsUserLocation={true} />
+          showsUserLocation={true}
+          followUserLocation={true} />
       </View>
     )
   }
