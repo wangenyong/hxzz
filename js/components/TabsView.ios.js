@@ -11,7 +11,7 @@ import Colors from '../common/Colors';
 import PostView from '../components/PostView';
 import Info from '../containers/Info';
 import Setting from '../containers/Setting';
-import MapsView from '../components/MapsView';
+import Maps from '../containers/Maps';
 import {
   View,
   Text,
@@ -76,7 +76,7 @@ class TabsView extends Component {
           selected={this.props.tab === 'map'}
           onPress={this.onTabSelect.bind(this, 'map')}
           >
-          <MapsView navigator={this.props.navigator} />
+          <Maps navigator={this.props.navigator} />
         </Icon.TabBarItem>
         <Icon.TabBarItem
           title="系统设置"
