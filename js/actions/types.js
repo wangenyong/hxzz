@@ -1,7 +1,6 @@
 /**
  * @flow
  */
-
 'use strict';
 
 export type Action =
@@ -18,5 +17,5 @@ export type Action =
   | { type: 'SECOND_NEWSLIST_RECEIVED', json: Array<Object> }
   | { type: 'THIRD_NEWSLIST_RECEIVED', json: Array<Object> }
   | { type: 'NEWS_DETAIL_RECEIVED', json: string }
-  | { type: 'LOCATION_RECEIVED', json: Object }
+  | { type: 'LOCATION_RECEIVED', json: Array<Object> }
   ;

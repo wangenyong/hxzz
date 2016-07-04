@@ -6,23 +6,21 @@
 
 import { connect } from 'react-redux';
 import MapsView from '../components/MapsView';
-//import { onUserLoginSuccess, onUserLoginError } from '../actions';
+import { sendGPS } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
-    annotations: state.map.annotations
+    annotations: state.map.annotations,
+    username: state.user.username
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onLoginSuccess: (json: Object) => {
-//       dispatch(onUserLoginSuccess(json));
-//     },
-//     onLoginError: () => {
-//       dispatch(onUserLoginError());
-//     }
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onGpsSend: (username: string, longitude: number, latitude: number) => {
+      dispatch(sendGPS(username, longitude, latitude));
+    }
+  }
+}
 
-export default connect(mapStateToProps)(MapsView)
+export default connect(mapStateToProps, mapDispatchToProps)(MapsView)

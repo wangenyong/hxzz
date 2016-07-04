@@ -23,6 +23,8 @@ import {
 type Props = {
   navigator: Navigator;
   annotations: Array<Object>;
+  username: string;
+  onGpsSend: (username: string, longitude: number, latitude: number) => void;
 }
 
 type State = {
@@ -83,7 +85,8 @@ class MapsView extends Component {
   }
 
   _onRegionChangeComplete(region: any) {
-    
+    const { username, onGpsSend } = this.props;
+    onGpsSend(username, region.longitude, region.latitude);
   }
 
 }

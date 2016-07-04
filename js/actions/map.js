@@ -11,7 +11,7 @@ export function sendGPS(username: string, longitude: number, latitude: number): 
       .then((response) => response.text())
       .then((responseText) => JSON.parse(responseText))
       .then((json) => {
-        console.log(json);
+        console.log(json.gps);
         dispatch(locationsReceived(json))
       })
       .catch((error) => {
@@ -20,7 +20,7 @@ export function sendGPS(username: string, longitude: number, latitude: number): 
   }
 }
 
-export function locationsReceived(json: Object): Action {
+export function locationsReceived(json: Array<Object>): Action {
   return {
     type: 'LOCATION_RECEIVED',
     json
