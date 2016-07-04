@@ -68,6 +68,7 @@ class MapsView extends Component {
           style={{flex: 1}}
           regin={this.state.region}
           onRegionChange={this._onRegionChange.bind(this)}
+          onRegionChangeComplete={this._onRegionChangeComplete.bind(this)}
           annotations={this.props.annotations}
           showsUserLocation={true}
           followUserLocation={true} />
@@ -79,6 +80,10 @@ class MapsView extends Component {
     this.setState({
       region: region
     });
+  }
+
+  _onRegionChangeComplete(region: any) {
+    
   }
 
 }
