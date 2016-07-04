@@ -7,22 +7,11 @@
 import type {Action} from '../actions/types';
 
 type State = {
-  annotations: [
-    {
-      latitude: number,
-      longitude: number,
-      title: string
-    }
-  ]
+  annotations: Array<Object>
 }
 
 const initialState = {
   annotations: [
-    {
-      latitude: 24,
-      longitude: 100,
-      title: 'TEST'
-    }
   ]
 };
 
