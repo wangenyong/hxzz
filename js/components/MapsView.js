@@ -20,6 +20,11 @@ import {
   MapView
 } from 'react-native';
 
+type Props = {
+  navigator: Navigator;
+  annotations: Array<Object>;
+}
+
 type State = {
   region: {
     latitude: number,
@@ -30,10 +35,11 @@ type State = {
 }
 
 class MapsView extends Component {
+  props: Props;
   state: State;
 
-  constructor() {
-    super();
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       region: {
@@ -62,6 +68,7 @@ class MapsView extends Component {
           style={{flex: 1}}
           regin={this.state.region}
           onRegionChange={this._onRegionChange.bind(this)}
+          annotations={this.props.annotations}
           showsUserLocation={true}
           followUserLocation={true} />
       </View>
