@@ -47,7 +47,7 @@ class SettingView extends Component {
           style={[{backgroundColor}]} />
 
         <Text style={{margin: 10, fontSize: 16}} >华夏中专OA手机端 </Text>
-        <Text style={{marginLeft: 10, fontSize: 12}} >当前版本：0.3.5</Text>
+        <Text style={{marginLeft: 10, fontSize: 12}} >当前版本：0.3.6</Text>
         <Text style={{margin: 10, fontSize: 16}} >当前用户：{this.props.realname}/{this.props.username}</Text>
 
         <TouchableOpacity onPress={this._logout.bind(this)} >

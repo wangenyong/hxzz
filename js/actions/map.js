@@ -13,11 +13,13 @@ export function sendGPS(username: string, longitude: number, latitude: number): 
       .then((json) => {
         var array = [];
         json.gps.map((location, index) => {
-          array.push({
-            longitude: location.gps[0],
-            latitude: location.gps[1],
-            title: location.name
-          })
+          if (location.name !== username) {
+            array.push({
+              longitude: location.gps[0],
+              latitude: location.gps[1],
+              title: location.name
+            })
+          }
         });
         dispatch(locationsReceived(array))
       })
