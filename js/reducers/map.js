@@ -28,6 +28,11 @@ const initialState = {
 
 export default function map(state: State = initialState, action: Action): State {
   switch (action.type) {
+    case 'LOCATION_RECEIVED':
+      return {
+        ...state,
+        annotations: action.json
+      }
     default:
       return state
   }
